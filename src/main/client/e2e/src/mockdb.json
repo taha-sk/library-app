@@ -1,0 +1,160 @@
+{
+  "booksMock": [
+    {
+      "id": "6065921b33e3fb30eff1acf9",
+      "title": "End of Watch",
+      "author": "Stephen King",
+      "_links": {
+        "self": {
+          "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acf9"
+        },
+        "book": {
+          "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acf9"
+        }
+      }
+    },
+    {
+      "id": "6065921b33e3fb30eff1acfa",
+      "title": "The Shining",
+      "author": "Stephen King",
+      "_links": {
+        "self": {
+          "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfa"
+        },
+        "book": {
+          "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfa"
+        }
+      }
+    },
+    {
+      "id": "6065921b33e3fb30eff1acfb",
+      "title": "A Dance with Dragons",
+      "author": "George R. R. Martin",
+      "_links": {
+        "self": {
+          "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfb"
+        },
+        "book": {
+          "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfb"
+        }
+      }
+    },
+    {
+      "id": "6065921b33e3fb30eff1acfc",
+      "title": "The Lord of the Rings",
+      "author": "J. R. R. Tolkien",
+      "_links": {
+        "self": {
+          "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfc"
+        },
+        "book": {
+          "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfc"
+        }
+      }
+    },
+    {
+      "id": "6065921b33e3fb30eff1acfd",
+      "title": "Outliers",
+      "author": "Malcolm Gladwell",
+      "_links": {
+        "self": {
+          "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfd"
+        },
+        "book": {
+          "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfd"
+        }
+      }
+    }
+  ],
+  "paginatedMock": {
+    "_embedded": {
+      "books": [
+        {
+          "title": "End of Watch",
+          "author": "Stephen King",
+          "_links": {
+            "self": {
+              "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acf9"
+            },
+            "book": {
+              "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acf9"
+            }
+          }
+        },
+        {
+          "title": "The Shining",
+          "author": "Stephen King",
+          "_links": {
+            "self": {
+              "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfa"
+            },
+            "book": {
+              "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfa"
+            }
+          }
+        },
+        {
+          "title": "A Dance with Dragons",
+          "author": "George R. R. Martin",
+          "_links": {
+            "self": {
+              "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfb"
+            },
+            "book": {
+              "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfb"
+            }
+          }
+        },
+        {
+          "title": "The Lord of the Rings",
+          "author": "J. R. R. Tolkien",
+          "_links": {
+            "self": {
+              "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfc"
+            },
+            "book": {
+              "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfc"
+            }
+          }
+        },
+        {
+          "title": "Outliers",
+          "author": "Malcolm Gladwell",
+          "_links": {
+            "self": {
+              "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfd"
+            },
+            "book": {
+              "href": "http://localhost:3000/api/booksMock/6065921b33e3fb30eff1acfd"
+            }
+          }
+        }
+      ]
+    },
+    "_links": {
+      "self": {
+        "href": "http://localhost:3000/api/books"
+      },
+      "profile": {
+        "href": "http://localhost:3000/api/profile/books"
+      }
+    },
+    "page": {
+      "size": 5,
+      "totalElements": 5,
+      "totalPages": 1,
+      "number": 0
+    }
+  },
+  "rootMock": {
+    "_links": {
+      "books": {
+        "href": "http://localhost:3000/api/books{?page,size,sort}",
+        "templated": true
+      },
+      "profile": {
+        "href": "http://localhost:3000/api/profile"
+      }
+    }
+  }
+}

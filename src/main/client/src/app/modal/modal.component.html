@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <h5 *ngIf="action === 'NEW'" class="modal-title">Add New Book</h5>
+  <h5 *ngIf="action === 'UPDATE'" class="modal-title">Update Book</h5>
+  <h5 *ngIf="action === 'DELETE'" class="modal-title">Delete Book</h5>
+  <button id="crossBtn" type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+    <div class="mb-3">
+      <label for="bookTitle">Book Title</label>
+      <input type="text" [ngClass]="['form-control', title.touched ? (title.valid ? 'is-valid' : 'is-invalid') : '']" id="bookTitle" formControlName="title" placeholder="Enter Book Title" required>
+      <div class="invalid-feedback">
+        Please enter book title.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="bookAuthor">Author</label>
+      <input type="text" [ngClass]="['form-control', author.touched ? (author.valid ? 'is-valid' : 'is-invalid') : '']" id="bookAuthor" formControlName="author" placeholder="Enter Author" required>
+      <div class="invalid-feedback">
+        Please enter author.
+      </div>
+    </div>
+    <div class="mb-3" *ngIf="action === 'NEW'">
+       <re-captcha formControlName="captcha" siteKey="6LcQB38aAAAAAPMDuQIYPye50ZfKDp2PhZZvB-Mq"></re-captcha>
+    </div>
+    <!-- Handle Validation Errors -->
+      <div class="mb-3" *ngFor="let errorItem of errorResponse?.errors">
+          <div class="alert alert-danger" role="alert">{{ errorItem.message }}</div>
+      </div>
+    <!-- Handle Other Errors -->
+      <div class="mb-3" *ngIf="errorResponse && errorResponse.errors === undefined ">
+        <div class="alert alert-danger" role="alert">{{ errorResponse.error_message }}</div>
+      </div> 
+    <hr *ngIf="action === 'DELETE'">
+    <p *ngIf="action === 'DELETE'"><b>Are you sure you want to delete this record?</b></p>
+  </div>
+  <div class="modal-footer">
+    <div *ngIf="showLoadingAnimation" ><img src="assets/animations/loading.gif" class="img-fluid"></div>
+    <button id="cancelBtn" type="button" ngbAutofocus class="btn btn-secondary"
+      (click)="activeModal.dismiss('Cancel click')">Cancel</button>
+    <button *ngIf="action === 'NEW'" type="submit" class="btn btn-primary" [disabled]="!bookForm.valid">Add</button>
+    <button *ngIf="action === 'UPDATE'" type="submit" class="btn btn-primary" [disabled]="!bookForm.valid">Update</button>
+    <button *ngIf="action === 'DELETE'" type="submit" class="btn btn-danger">Delete</button>
+  </div>
+</form>
