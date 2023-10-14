@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
 import com.thcode.library.controller.CaptchaController;
 
@@ -16,6 +17,7 @@ import com.thcode.library.controller.CaptchaController;
  *
  */
 @SpringBootTest
+@TestPropertySource(properties = "spring.mongodb.embedded.version=6.0.1")
 class LibraryAppApplicationTests {
 	
 	@Autowired
