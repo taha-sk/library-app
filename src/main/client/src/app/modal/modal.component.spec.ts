@@ -38,7 +38,7 @@ describe('ModalComponent', () => {
         return of (result);
       },
       getBooks(path: string, options?: any){
-        const result = { _embedded : { books : []} } as HMPagination;
+        const result = { _embedded : { books : []} } as unknown as HMPagination;
         return of ( result );
       },
       createBook(path: string, book: Book){
@@ -96,10 +96,10 @@ describe('ModalComponent', () => {
     const title = fixture.nativeElement.querySelector('h5');
     expect(title.textContent).toBe("Add New Book");
     expect(component.ip).toEqual("127.0.0.2");
-    expect(component.title.value).toEqual("");
-    expect(component.author.value).toEqual("");
-    expect(component.title.enabled).toEqual(true);
-    expect(component.author.enabled).toEqual(true);
+    expect(component.title!.value).toEqual("");
+    expect(component.author!.value).toEqual("");
+    expect(component.title!.enabled).toEqual(true);
+    expect(component.author!.enabled).toEqual(true);
     expect(component.captcha).toBeDefined();
     const error = fixture.nativeElement.querySelector('.alert-danger');
     expect(error).toBeNull(); //No errors should be shown
@@ -116,10 +116,10 @@ describe('ModalComponent', () => {
     const title = fixture.nativeElement.querySelector('h5');
     expect(title.textContent).toBe("Update Book");
     expect(component.ip).toEqual("127.0.0.2");
-    expect(component.title.value).toEqual("atit");
-    expect(component.author.value).toEqual("aauth");
-    expect(component.title.enabled).toEqual(true);
-    expect(component.author.enabled).toEqual(true);
+    expect(component.title!.value).toEqual("atit");
+    expect(component.author!.value).toEqual("aauth");
+    expect(component.title!.enabled).toEqual(true);
+    expect(component.author!.enabled).toEqual(true);
     expect(component.captcha).toBeNull();
     const error = fixture.nativeElement.querySelector('.alert-danger');
     expect(error).toBeNull(); //No errors should be shown
@@ -136,10 +136,10 @@ describe('ModalComponent', () => {
     const title = fixture.nativeElement.querySelector('h5');
     expect(title.textContent).toBe("Delete Book");
     expect(component.ip).toEqual("127.0.0.2");
-    expect(component.title.value).toEqual("atitd");
-    expect(component.author.value).toEqual("aauthd");
-    expect(component.title.enabled).toEqual(false);
-    expect(component.author.enabled).toEqual(false);
+    expect(component.title!.value).toEqual("atitd");
+    expect(component.author!.value).toEqual("aauthd");
+    expect(component.title!.enabled).toEqual(false);
+    expect(component.author!.enabled).toEqual(false);
     expect(component.captcha).toBeNull();
     const error = fixture.nativeElement.querySelector('.alert-danger');
     expect(error).toBeNull(); //No errors should be shown
@@ -164,8 +164,8 @@ describe('ModalComponent', () => {
     bookTitleInput.value = '';
     bookTitleInput.dispatchEvent(event);
 
-    expect(component.title.value).toEqual('');
-    expect(component.author.value).toEqual('aauth');
+    expect(component.title!.value).toEqual('');
+    expect(component.author!.value).toEqual('aauth');
     expect(component.bookForm.status).toEqual('INVALID');
   });
 
@@ -181,8 +181,8 @@ describe('ModalComponent', () => {
     bookAuthorInput.value = '';
     bookAuthorInput.dispatchEvent(event);
   
-    expect(component.title.value).toEqual('atit');
-    expect(component.author.value).toEqual('');
+    expect(component.title!.value).toEqual('atit');
+    expect(component.author!.value).toEqual('');
     expect(component.bookForm.status).toEqual('INVALID');
   });
 
@@ -191,8 +191,8 @@ describe('ModalComponent', () => {
     component.book = { title: "atit", author: "aauth"} as Book;
     component.action = "UPDATE";
     fixture.detectChanges();  
-    expect(component.title.value).toEqual('atit');
-    expect(component.author.value).toEqual('aauth');
+    expect(component.title!.value).toEqual('atit');
+    expect(component.author!.value).toEqual('aauth');
     expect(component.bookForm.status).toEqual('VALID');
   });
 

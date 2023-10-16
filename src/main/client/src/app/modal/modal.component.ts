@@ -26,9 +26,13 @@ export class ModalComponent implements OnInit {
 
   showLoadingAnimation: boolean = false;
 
-  bookForm = this.formBuilder.group({
-    title: ['', Validators.required],
-    author: ['', Validators.required]
+  bookForm = this.formBuilder.group<{
+    title: FormControl<string|null>,
+    author: FormControl<string|null>,
+    captcha?: FormControl<string|null>,
+  }>({
+    title:  new FormControl('', Validators.required),
+    author:  new FormControl('', Validators.required)
   });
 
   //Getters are necessary for form validation
@@ -61,11 +65,11 @@ export class ModalComponent implements OnInit {
     if( this.action === "NEW"){
       this.bookForm.addControl('captcha', new FormControl('', Validators.required));
       //Due to a bug in ng-recaptcha
-      this.captcha.reset();
+      this.captcha!.reset();
     }
     if( this.action === "DELETE"){
-      this.title.disable();
-      this.author.disable();
+      this.title!.disable();
+      this.author!.disable();
     }
   }
 
@@ -76,7 +80,7 @@ export class ModalComponent implements OnInit {
   onSubmit(){
     this.showLoadingAnimation = true;
     if( this.action === "NEW"){
-      const captchaRequest = { response: this.captcha.value, remoteip: this.ip} as CaptchaRequest
+      const captchaRequest = { response: this.captcha!.value, remoteip: this.ip} as CaptchaRequest
       this.captchaService.validateCaptcha(captchaRequest).subscribe(
         (data:any) =>
         {
@@ -84,7 +88,7 @@ export class ModalComponent implements OnInit {
           {
             this.showLoadingAnimation = false;
             this.errorResponse = data as HttpError;
-            this.captcha.reset();
+            this.captcha!.reset();
           }else{
             const captchaResponse = data as CaptchaResponse;
             if(captchaResponse.success){
@@ -95,7 +99,7 @@ export class ModalComponent implements OnInit {
                   if(data?.error_message !== undefined)
                   {
                     this.errorResponse = data as HttpError;
-                    this.captcha.reset();
+                    this.captcha!.reset();
                   }else{
                     this.save();
                   }
@@ -104,7 +108,7 @@ export class ModalComponent implements OnInit {
             }else{
               this.showLoadingAnimation = false;
               this.errorResponse = { error_message: "Invalid Captcha. Please try again." } as HttpError;
-              this.captcha.reset();
+              this.captcha!.reset();
             }
           }
         }

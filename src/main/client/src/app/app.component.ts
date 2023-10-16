@@ -11,8 +11,8 @@ export class AppComponent {
 }
 
 //NG Recaptcha Fix
-RecaptchaComponent.prototype.ngOnDestroy = function() {
-  if (this.subscription) {
-    this.subscription.unsubscribe();
-  }
-}
+//RecaptchaComponent.prototype.ngOnDestroy = function() {
+//  if (this.subscription) {
+//    this.subscription.unsubscribe();
+//  }
+//}

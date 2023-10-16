@@ -10,14 +10,14 @@
   <div class="modal-body">
     <div class="mb-3">
       <label for="bookTitle">Book Title</label>
-      <input type="text" [ngClass]="['form-control', title.touched ? (title.valid ? 'is-valid' : 'is-invalid') : '']" id="bookTitle" formControlName="title" placeholder="Enter Book Title" required>
+      <input type="text" [ngClass]="['form-control', title!.touched ? (title!.valid ? 'is-valid' : 'is-invalid') : '']" id="bookTitle" formControlName="title" placeholder="Enter Book Title" required>
       <div class="invalid-feedback">
         Please enter book title.
       </div>
     </div>
     <div class="mb-3">
       <label for="bookAuthor">Author</label>
-      <input type="text" [ngClass]="['form-control', author.touched ? (author.valid ? 'is-valid' : 'is-invalid') : '']" id="bookAuthor" formControlName="author" placeholder="Enter Author" required>
+      <input type="text" [ngClass]="['form-control', author!.touched ? (author!.valid ? 'is-valid' : 'is-invalid') : '']" id="bookAuthor" formControlName="author" placeholder="Enter Author" required>
       <div class="invalid-feedback">
         Please enter author.
       </div>

@@ -29,7 +29,7 @@ describe('BookListComponent', () => {
         return of (result);
       },
       getBooks(path: string, options?: any){
-        const result = { _embedded : { books : []} } as HMPagination;
+        const result = { _embedded : { books : []} } as unknown as HMPagination;
         return of ( result );
       },
       createBook(path: string, book: Book){

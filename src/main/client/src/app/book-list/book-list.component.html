@@ -26,8 +26,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let book of booksPaginated?._embedded.books; index as i">
-            <td scope="row">{{ ( convertInt(pageSize.value) * booksPaginated?.page.number ) + i + 1 }}</td>
+        <tr *ngFor="let book of booksPaginated?._embedded!.books; index as i">
+            <td scope="row">{{ ( convertInt(pageSize.value!) * booksPaginated?.page!.number ) + i + 1 }}</td>
             <td id="rowBookTitle">{{ book.title }}</td>
             <td id="rowBookAuthor">{{ book.author }}</td>
             <td><button id="updateBookBtn" type="button" class="btn btn-primary" (click)="updateBook(book)">Update</button></td>
@@ -36,13 +36,13 @@
     </tbody>
 </table>
 <!-- Pagination -->
-<nav *ngIf="booksPaginated?._embedded.books.length > 0" aria-label="Results pages">
+<nav *ngIf="booksPaginated?._embedded!.books.length > 0" aria-label="Results pages">
     <ul class="pagination justify-content-end">
-        <li id="pageFirstLink" [ngClass]="'page-item ' + (booksPaginated?._links.first ? '' : 'disabled')"><a class="page-link" (click)="getBooks(booksPaginated?._links.first?.href)">First</a></li>
-        <li id="pagePreviousLink" [ngClass]="'page-item ' + (booksPaginated?._links.prev ? '' : 'disabled')"><a class="page-link" (click)="getBooks(booksPaginated?._links.prev?.href)">Previous</a></li>
-        <li class="page-item"><div class="m-2">Page {{booksPaginated?.page.number + 1}} of {{booksPaginated?.page.totalPages}}</div></li>
-        <li id="pageNextLink" [ngClass]="'page-item ' + (booksPaginated?._links.next ? '' : 'disabled')"><a class="page-link" (click)="getBooks(booksPaginated?._links.next?.href)">Next</a></li>
-        <li id="pageLastLink" [ngClass]="'page-item ' + (booksPaginated?._links.last ? '' : 'disabled')"><a class="page-link" (click)="getBooks(booksPaginated?._links.last?.href)">Last</a></li>
+        <li id="pageFirstLink" [ngClass]="'page-item ' + (booksPaginated?._links!.first ? '' : 'disabled')"><a class="page-link" (click)="getBooks(booksPaginated?._links!.first?.href!)">First</a></li>
+        <li id="pagePreviousLink" [ngClass]="'page-item ' + (booksPaginated?._links!.prev ? '' : 'disabled')"><a class="page-link" (click)="getBooks(booksPaginated?._links!.prev?.href!)">Previous</a></li>
+        <li class="page-item"><div class="m-2">Page {{booksPaginated?.page!.number + 1}} of {{booksPaginated?.page!.totalPages}}</div></li>
+        <li id="pageNextLink" [ngClass]="'page-item ' + (booksPaginated?._links!.next ? '' : 'disabled')"><a class="page-link" (click)="getBooks(booksPaginated?._links!.next?.href!)">Next</a></li>
+        <li id="pageLastLink" [ngClass]="'page-item ' + (booksPaginated?._links!.last ? '' : 'disabled')"><a class="page-link" (click)="getBooks(booksPaginated?._links!.last?.href!)">Last</a></li>
     </ul>
 </nav>
 <button id="addBookBtn" type="button" class="btn btn-primary mb-3" (click)="addBook()">
@@ -52,6 +52,6 @@
 <div class="mb-3" *ngIf="errorResponse">
     <div class="alert alert-danger" role="alert">{{ errorResponse.error_message }}</div>
 </div>
-<div class="mb-3" *ngIf="booksPaginated?._embedded.books.length === 0 && !errorResponse">
+<div class="mb-3" *ngIf="booksPaginated?._embedded!.books.length === 0 && !errorResponse">
     <div class="alert alert-primary" role="alert">No books found. You can add new book by clicking Add Book button!</div>
 </div>

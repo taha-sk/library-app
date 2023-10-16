@@ -1,0 +1,22 @@
+services:
+  libraryapp-mongo:
+    image: mongo:6.0.11
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mdbadmin
+      MONGO_INITDB_ROOT_PASSWORD: mdbadmin123
+      MONGO_INITDB_DATABASE: libraryApp
+    ports:
+      - 127.0.0.1:27017:27017
+    volumes:
+      - ./mongo-mdbuser-init.js:/docker-entrypoint-initdb.d/mongo-mdbuser-init.js:ro
+
+  libraryapp-spring:
+    build: .
+    image: libraryapp-spring:2.0.0
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mdbuser:mdbuser123@libraryapp-mongo:27017/libraryApp
+    depends_on:
+      - libraryapp-mongo
+    ports:
+      - 127.0.0.1:8080:8080
