@@ -14,6 +14,7 @@ services:
   libraryapp-spring:
     build: .
     image: libraryapp-spring:2.0.0
+    restart: always
     environment:
       SPRING_DATA_MONGODB_URI: mongodb://mdbuser:mdbuser123@libraryapp-mongo:27017/libraryApp
     depends_on:

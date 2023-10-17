@@ -9,10 +9,3 @@ import { RecaptchaComponent } from 'ng-recaptcha';
 export class AppComponent {
   title = 'client';
 }
-
-//NG Recaptcha Fix
-//RecaptchaComponent.prototype.ngOnDestroy = function() {
-//  if (this.subscription) {
-//    this.subscription.unsubscribe();
-//  }
-//}

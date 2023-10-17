@@ -2,9 +2,7 @@
   <h5 *ngIf="action === 'NEW'" class="modal-title">Add New Book</h5>
   <h5 *ngIf="action === 'UPDATE'" class="modal-title">Update Book</h5>
   <h5 *ngIf="action === 'DELETE'" class="modal-title">Delete Book</h5>
-  <button id="crossBtn" type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <button id="crossBtn" type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
   <div class="modal-body">
